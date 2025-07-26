@@ -69,7 +69,6 @@ A significant technical decision involved transitioning from Google APIs to Duck
 
 - **Elimination of API Key Requirements**: DuckDuckGo's API eliminates the need for API key management, reducing deployment complexity and potential security concerns
 - **Reduced Subscription Overhead**: The absence of usage-based billing and subscription requirements simplifies the development and deployment process
-- **Enhanced Privacy**: DuckDuckGo's privacy-focused approach aligns with modern application development best practices
 - **Simplified Integration**: The straightforward API integration reduces development time and maintenance overhead
 
 ### **Technology Stack Selection**
@@ -87,7 +86,6 @@ Streamlit was chosen as the frontend framework due to its:
 - Rapid development capabilities for data-driven applications
 - Built-in support for real-time updates and interactive components
 - Minimal boilerplate code requirements
-- Excellent integration with Python-based AI workflows
 
 #### **Ollama for Local Model Management**
 The integration of Ollama significantly accelerated the development process by providing:
@@ -130,14 +128,12 @@ The evaluation workflow automation significantly improved development velocity:
 - **Smart Test Data Conversion**: Automatic conversion of logs to test data format
 - **Fallback Sample Data**: Automatic generation of sample test data when logs are unavailable
 - **Structured Output**: Automatic generation of `eval_results.json` and separate report files
-- **Real-time Feedback**: Immediate evaluation results enabling rapid iteration
 
 #### **Custom-built-in Evaluation Advantages**
 The system uses a custom-built evaluation logic instead of external tools for several advantages:
 - **No External Dependencies**: Eliminates the need for external CLI tools
 - **Faster Execution**: Direct Python evaluation without subprocess overhead
 - **Customizable Metrics**: Easy to modify and extend evaluation criteria
-- **Better Integration**: Seamless integration with the existing codebase
 - **Transparent Logic**: Clear, readable evaluation algorithms
 
 ### **Quality Metrics**
