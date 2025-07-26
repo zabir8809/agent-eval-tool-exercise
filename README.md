@@ -57,7 +57,7 @@ The AI Travel Agent consists of two main components:
 
 > **Key Assumption**: All decisions and technology choices were made with fast prototyping and MVP development in mind, prioritizing rapid iteration and reduced complexity over long-term scalability.
 
-The AI Travel Agent was developed as an evolution from an existing codebase, focusing on rapid prototyping and efficient development practices. The project's foundation was built upon several strategic technical decisions that prioritized ease of use, reduced overhead, and accelerated development cycles.
+The AI Travel Agent was developed as an evolution from an existing codebase, focusing on rapid prototyping and efficient development practices. Several strategic technical decisions were made that prioritize ease of use, reduced overhead, and accelerated development cycles.
 
 ### **Initial Codebase Adaptation**
 
@@ -117,7 +117,7 @@ python run_evaluation.py --analyze-results
 
 ### **Development Context & Workflow Insights**
 
-The evaluation system was developed through a strategic decision-making process that prioritized rapid prototyping and seamless integration. After exploring external tools like Watsonx Governance, TruLens, and Promptfoo, the team encountered integration challenges that hindered development velocity. This led to the strategic decision to implement a custom evaluation system that enabled faster iteration and better control over metrics.
+The evaluation system was developed through a strategic decision-making process that prioritized rapid prototyping and seamless integration. 
 
 #### **Key Development Decisions**
 - **Custom Evaluation Functions**: Switching from external tools to custom-built evaluation functions enabled faster iteration and better control over metrics
