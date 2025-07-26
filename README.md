@@ -100,14 +100,41 @@ The integration of Ollama significantly accelerated the development process by p
 
 The app includes a comprehensive custom evaluation system with built-in quality assessment:
 
-### **Development Context**
+### **Running Evaluations**
 
-The evaluation system was developed through a strategic decision-making process that prioritized rapid prototyping and seamless integration:
+```bash
+# Generate sample test data. Note: Use this if no itinerary was generated, hence no log files. Otherwise, start running a comprehensive evaluation.
+python run_evaluation.py --generate-sample-data
+# Run comprehensive evaluation
+python run_evaluation.py --run-eval
+# Analyze existing results
+python run_evaluation.py --analyze-results
+```
 
-- **Initial Experience**: The developer had prior experience with the Watsonx Governance evaluation tool.
-- **Exploration Phase**: Due to limitations with the usage of Watsonx Governance for this specific project, alternative open-source evaluation frameworks were explored, including TruLens and Promptfoo.
-- **Integration Challenges**: Encountered difficulties integrating TruLens UI for metric tracking within the project architecture.
-- **Strategic Decision**: To enable fast prototyping and maintain development velocity, a custom evaluation system was implemented instead.
+### **Development Context & Workflow Insights**
+
+The evaluation system was developed through a strategic decision-making process that prioritized rapid prototyping and seamless integration. After exploring external tools like Watsonx Governance, TruLens, and Promptfoo, the team encountered integration challenges that hindered development velocity. This led to the strategic decision to implement a custom evaluation system that enabled faster iteration and better control over metrics.
+
+#### **Key Development Decisions**
+- **Custom Evaluation Functions**: Switching from external tools to custom-built evaluation functions enabled faster iteration and better control over metrics
+- **Strategic Metric Selection**: Carefully chosen metrics (relevance, content validation, quality assessment) provided comprehensive coverage without overwhelming complexity
+- **Assertion-Based Validation**: Implementing specific assertions for destination mentions, day structures, and travel keywords ensured consistent quality standards
+
+#### **Automation Benefits**
+The evaluation workflow automation significantly improved development velocity:
+- **Automatic Log Generation**: Seamless capture of all agent interactions for evaluation
+- **Smart Test Data Conversion**: Automatic conversion of logs to test data format
+- **Fallback Sample Data**: Automatic generation of sample test data when logs are unavailable
+- **Structured Output**: Automatic generation of `eval_results.json` and separate report files
+- **Real-time Feedback**: Immediate evaluation results enabling rapid iteration
+
+#### **Custom-built-in Evaluation Advantages**
+The system uses a custom-built evaluation logic instead of external tools for several advantages:
+- **No External Dependencies**: Eliminates the need for external CLI tools
+- **Faster Execution**: Direct Python evaluation without subprocess overhead
+- **Customizable Metrics**: Easy to modify and extend evaluation criteria
+- **Better Integration**: Seamless integration with the existing codebase
+- **Transparent Logic**: Clear, readable evaluation algorithms
 
 ### **Core Components**
 
@@ -147,55 +174,6 @@ The evaluation system was developed through a strategic decision-making process 
   3. Accommodations (hotels, lodging)
   4. Realistic planning (substantial response length)
   5. Day count matching (requested vs. provided)
-
-### **Running Evaluations**
-
-```bash
-# Generate sample test data. Note: Use this if no itinerary was generated, hence no log files. Otherwise, start running a comprehensive evaluation.
-python run_evaluation.py --generate-sample-data
-# Run comprehensive evaluation
-python run_evaluation.py --run-eval
-# Analyze existing results
-python run_evaluation.py --analyze-results
-```
-
-### **Evaluation Workflow Insights**
-
-#### **Key Workflow Decisions**
-- **Custom Evaluation Functions**: Switching from external tools to custom-built evaluation functions enabled faster iteration and better control over metrics
-- **Strategic Metric Selection**: Carefully chosen metrics (relevance, content validation, quality assessment) provided comprehensive coverage without overwhelming complexity
-- **Assertion-Based Validation**: Implementing specific assertions for destination mentions, day structures, and travel keywords ensured consistent quality standards
-
-#### **Automation Benefits**
-The evaluation workflow automation significantly improved development velocity:
-- **Automatic Log Generation**: Seamless capture of all agent interactions for evaluation
-- **Smart Test Data Conversion**: Automatic conversion of logs to test data format
-- **Fallback Sample Data**: Automatic generation of sample test data when logs are unavailable
-- **Structured Output**: Automatic generation of `eval_results.json` and separate report files
-- **Real-time Feedback**: Immediate evaluation results enabling rapid iteration
-
-### **Custom-built-in Evaluation Advantages**
-
-The system uses a custom-built evaluation logic instead of external tools for several advantages:
-
-1. **No External Dependencies**: Eliminates the need for external CLI tools
-2. **Faster Execution**: Direct Python evaluation without subprocess overhead
-3. **Customizable Metrics**: Easy to modify and extend evaluation criteria
-4. **Better Integration**: Seamless integration with the existing codebase
-5. **Transparent Logic**: Clear, readable evaluation algorithms
-
-## File Structure
-
-```
-ai_travel_agent/
-├── travel_agent.py          # Main app with evaluation logging
-├── eval_utils.py            # Evaluation utilities with built-in logic
-├── run_evaluation.py        # Evaluation runner
-├── requirements.txt         # Python dependencies
-└── README.md                # This file
-```
-
-## Configuration
 
 ### Custom Built-in Evaluation Logic
 
@@ -272,39 +250,30 @@ def _evaluate_quality(response, num_days):
 ## Next Steps
 
 ### **Core Improvements**
-1. **Expand Test Cases**: Add more diverse destinations and durations to improve evaluation coverage across different travel scenarios, cultural contexts, and trip lengths
-2. **Enhance Logging**: Capture researcher output and timing data to better understand agent performance and identify bottlenecks in the research-planning workflow
-3. **Improve Prompts**: Based on evaluation insights, refine agent prompts to improve response quality, consistency, and relevance to user preferences
-4. **Add Metrics**: Implement context relevance and factual accuracy metrics to ensure generated itineraries are both relevant and factually correct
 
-### **System Enhancements**
-5. **Automated Pipeline**: Implement CI/CD integration for continuous evaluation and deployment, enabling automated testing of agent improvements
-6. **Advanced Metrics**: Add cost estimation and accessibility metrics to provide more comprehensive travel planning capabilities
-7. **User Feedback**: Integrate human evaluation to validate automated metrics and capture subjective quality aspects
-8. **Multi-Agent Evaluation**: Test researcher-planner coordination to ensure seamless information flow between agents
-9. **Real-time Monitoring**: Implement live quality assessment to provide immediate feedback during development and deployment
-10. **Personalization**: Develop user-specific quality metrics to tailor evaluation criteria based on individual preferences
-11. **Continuous Learning**: Build a self-improving evaluation system that adapts based on performance patterns
+#### **1. Improve Agent Prompts**: Optimize prompts based on user feedback and performance analysis for better response quality.
 
-### **Evaluation System Extensions**
-12. **Add New Metrics**: Extend `TravelAgentEvaluator` class with custom evaluation criteria for specific use cases
-13. **Enhance Logging**: Capture additional metadata including model parameters, processing time, and resource usage
-14. **Improve Prompts**: Based on evaluation insights, optimize agent instructions for better performance
-15. **Add Tests**: Create new test cases for edge scenarios and failure modes to improve robustness
+#### **2. Optimize Agent Performance**: Significantly improve model response time and system efficiency for better user experience (intelligent caching, and parallel processing)
 
-### **Performance Optimization**
-16. **Model Response Time Improvement**: The current model response time is long due to:
-    - **Local Model Processing**: Deepseek R1 runs locally on CPU, which is slower than GPU-accelerated inference
-    - **Complex Multi-Agent Workflow**: Multiple agent interactions and web searches add cumulative latency
-    - **Large Context Processing**: Processing detailed research results and generating comprehensive itineraries requires significant computational resources
-    
-    **Improvement Strategies**:
-    - **GPU Acceleration**: Implement CUDA/GPU support for faster model inference
-    - **Model Quantization**: Use quantized models (INT8/FP16) to reduce memory usage and improve speed
-    - **Caching Mechanisms**: Cache common research results and frequently requested destinations
-    - **Streaming Responses**: Implement streaming to show partial results while processing continues
-    - **Parallel Processing**: Run researcher and planner agents in parallel where possible
-    - **Model Optimization**: Experiment with smaller, faster models for initial responses
+#### **3. Implement Automated Pipeline**: Set up comprehensive CI/CD integration for continuous deployment and quality assurance.
+
+#### **4. Add User Feedback Integration**: Integrate comprehensive user feedback collection and analysis to improve model responses
+
+#### **5. Implement Real-time Monitoring**: Create comprehensive real-time monitoring system for live performance tracking and immediate issue detection
+
+#### **6. Build Continuous Learning System**: Develop intelligent system that continuously learns and improves from user interactions and performance data.
+
+### **Evaluation Improvements**
+
+#### **1. Extend Evaluation Metrics**: Add new custom evaluation criteria to the `TravelAgentEvaluator` class for comprehensive quality assessment.
+
+#### **2. Enhance Evaluation Logging**: Capture comprehensive metadata during evaluation runs including model parameters, processing time, and resource usage.
+
+#### **4. Add Comprehensive Test Cases**: Create test cases for edge scenarios and failure modes to improve evaluation robustness.
+
+#### **5. Implement Multi-Agent Evaluation**: Test and evaluate researcher-planner coordination effectiveness for seamless agent communication.
+
+#### **6. Evaluate Against Ground Truth**: Implement ground truth comparison using expert-curated travel itineraries and real-world travel data for accurate quality assessment.
 
 > **🚀 Automation Note**: Further automating the evaluation workflow process, enabling real-time report generation, and implementing immediate mitigation strategies for failed assertions will significantly enhance the tool's effectiveness and make it production-ready for continuous deployment scenarios. 
 
