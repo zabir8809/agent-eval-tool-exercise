@@ -15,8 +15,8 @@ An AI-powered travel agent that generates personalized travel itineraries using 
 ### 1. Clone and Setup
 
 ```bash
-git clone https://github.com/Shubhamsaboo/awesome-llm-apps.git
-cd awesome-llm-apps/ai_agent_tutorials/ai_travel_agent
+git clone https://github.com/zabir8809/agent-eval-tool-exercise.git
+cd agent-eval-tool-exercise
 ```
 
 ### 2. Install Dependencies
