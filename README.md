@@ -140,19 +140,6 @@ The system uses a custom-built evaluation logic instead of external tools for se
 - **Better Integration**: Seamless integration with the existing codebase
 - **Transparent Logic**: Clear, readable evaluation algorithms
 
-### **Core Components**
-
-1. **`eval_utils.py`** - Main evaluation utilities
-   - `TravelAgentEvaluator` class
-   - Logging functionality
-   - Built-in evaluation logic
-   - Results analysis
-
-2. **`run_evaluation.py`** - Evaluation runner script
-   - Batch evaluation execution
-   - Sample data generation
-   - Report generation
-
 ### **Quality Metrics**
 
 #### 1. Answer Relevance
