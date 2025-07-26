@@ -103,10 +103,14 @@ The app includes a comprehensive custom evaluation system with built-in quality 
 ### **Running Evaluations**
 
 ```bash
-# Generate sample test data. Note: Use this if no itinerary was generated, hence no log files. Otherwise, start running a comprehensive evaluation.
+# Generate sample test data. 
+# Note: Use this if no itinerary was generated, hence no log files. 
+#Otherwise, start running a comprehensive evaluation.
 python run_evaluation.py --generate-sample-data
+
 # Run comprehensive evaluation
 python run_evaluation.py --run-eval
+
 # Analyze existing results
 python run_evaluation.py --analyze-results
 ```
@@ -275,6 +279,6 @@ def _evaluate_quality(response, num_days):
 
 #### **6. Evaluate Against Ground Truth**: Implement ground truth comparison using expert-curated travel itineraries and real-world travel data for accurate quality assessment.
 
-> **🚀 Automation Note**: Further automating the evaluation workflow process, enabling real-time report generation, and implementing immediate mitigation strategies for failed assertions will significantly enhance the tool's effectiveness and make it production-ready for continuous deployment scenarios. 
+> **Automation Note**: Further automating the evaluation workflow process, enabling real-time report generation, and implementing immediate mitigation strategies for failed assertions will significantly enhance the tool's effectiveness and make it production-ready for continuous deployment scenarios. 
 
 
