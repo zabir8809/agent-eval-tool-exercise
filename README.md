@@ -22,7 +22,7 @@ cd awesome-llm-apps/ai_agent_tutorials/ai_travel_agent
 ### 2. Install Dependencies
 
 ```bash
-# Create virtual environment
+# Create a virtual environment
 python -m venv .venv
 
 # Activate virtual environment
@@ -65,7 +65,7 @@ The project began by adapting and extending an existing travel planning codebase
  
 ### **API Strategy Evolution**
 
-A significant technical decision involved transitioning from Google APIs to DuckDuckGo's search API. This strategic move was driven by several key considerations:
+A significant technical decision involved transitioning from Google APIs to DuckDuckGo's search API. Several key considerations drove this strategic move:
 
 - **Elimination of API Key Requirements**: DuckDuckGo's API eliminates the need for API key management, reducing deployment complexity and potential security concerns
 - **Reduced Subscription Overhead**: The absence of usage-based billing and subscription requirements simplifies the development and deployment process
@@ -74,14 +74,13 @@ A significant technical decision involved transitioning from Google APIs to Duck
 
 ### **Technology Stack Selection**
 
-The development approach prioritized rapid prototyping and efficient development cycles through careful technology selection:
+The development approach prioritized rapid prototyping and efficient development cycles:
 
 #### **Agno Framework Integration**
 The Agno framework was selected for its comprehensive agent development capabilities and intuitive API design. This choice enabled:
 - Rapid agent creation and configuration
-- Seamless integration with external tools and APIs
+- Seamless integration with DuckDuckGo API.
 - Built-in support for complex multi-agent workflows
-- Simplified prompt management and agent coordination
 
 #### **Streamlit for User Interface**
 Streamlit was chosen as the frontend framework due to its:
@@ -96,9 +95,6 @@ The integration of Ollama significantly accelerated the development process by p
 - **Local Model Execution**: Reduces latency and eliminates dependency on external services
 - **Rapid Iteration**: Enables quick testing and refinement of model configurations
 - **Cost Efficiency**: Eliminates per-request costs associated with cloud-based model APIs
-- **Privacy Enhancement**: All processing occurs locally, ensuring data privacy and security
-
-This technology stack combination enabled rapid development cycles while maintaining high code quality and user experience standards. The local model execution through Ollama, combined with the streamlined API integration, created an efficient development environment that supports both prototyping and production deployment.
 
 ## Evaluation System
 
@@ -108,12 +104,10 @@ The app includes a comprehensive custom evaluation system with built-in quality 
 
 The evaluation system was developed through a strategic decision-making process that prioritized rapid prototyping and seamless integration:
 
-- **Initial Experience**: Developer had prior experience with WatsonX governance evaluation tools
-- **Exploration Phase**: Due to limitations with WatsonX governance tools for this specific project, alternative open-source evaluation frameworks were explored, including TruLens and Promptfoo
-- **Integration Challenges**: Encountered difficulties integrating TruLens UI for metric tracking within the project architecture
-- **Strategic Decision**: To enable fast prototyping and maintain development velocity, a custom evaluation system was implemented
-
-This approach aligns with the project's emphasis on rapid development cycles and reduced external dependencies, similar to the technology stack decisions made earlier in the project.
+- **Initial Experience**: The developer had prior experience with the Watsonx Governance evaluation tool.
+- **Exploration Phase**: Due to limitations with the usage of Watsonx Governance for this specific project, alternative open-source evaluation frameworks were explored, including TruLens and Promptfoo.
+- **Integration Challenges**: Encountered difficulties integrating TruLens UI for metric tracking within the project architecture.
+- **Strategic Decision**: To enable fast prototyping and maintain development velocity, a custom evaluation system was implemented instead.
 
 ### **Core Components**
 
@@ -127,7 +121,6 @@ This approach aligns with the project's emphasis on rapid development cycles and
    - Batch evaluation execution
    - Sample data generation
    - Report generation
-
 
 ### **Quality Metrics**
 
@@ -158,7 +151,7 @@ This approach aligns with the project's emphasis on rapid development cycles and
 ### **Running Evaluations**
 
 ```bash
-# Generate sample test data. Note: use this if the no itinerary was not generated hence no log files.
+# Generate sample test data. Note: Use this if no itinerary was generated, hence no log files. Otherwise, start running a comprehensive evaluation.
 python run_evaluation.py --generate-sample-data
 # Run comprehensive evaluation
 python run_evaluation.py --run-eval
@@ -167,8 +160,6 @@ python run_evaluation.py --analyze-results
 ```
 
 ### **Evaluation Workflow Insights**
-
-The evaluation system development provided valuable insights into effective evaluation practices:
 
 #### **Key Workflow Decisions**
 - **Custom Evaluation Functions**: Switching from external tools to custom-built evaluation functions enabled faster iteration and better control over metrics
@@ -183,9 +174,9 @@ The evaluation workflow automation significantly improved development velocity:
 - **Structured Output**: Automatic generation of `eval_results.json` and separate report files
 - **Real-time Feedback**: Immediate evaluation results enabling rapid iteration
 
-### **Custom built-in Evaluation Advantages**
+### **Custom-built-in Evaluation Advantages**
 
-The system uses a custom built-in evaluation logic instead of external tools for several advantages:
+The system uses a custom-built evaluation logic instead of external tools for several advantages:
 
 1. **No External Dependencies**: Eliminates the need for external CLI tools
 2. **Faster Execution**: Direct Python evaluation without subprocess overhead
@@ -197,12 +188,11 @@ The system uses a custom built-in evaluation logic instead of external tools for
 
 ```
 ai_travel_agent/
-├── travel_agent.py    # Main app with evaluation logging
+├── travel_agent.py          # Main app with evaluation logging
 ├── eval_utils.py            # Evaluation utilities with built-in logic
 ├── run_evaluation.py        # Evaluation runner
-├── eval_data.jsonl   # Sample test cases
 ├── requirements.txt         # Python dependencies
-└── README.md               # This file
+└── README.md                # This file
 ```
 
 ## Configuration
@@ -276,7 +266,7 @@ def _evaluate_quality(response, num_days):
 
 1. **Evaluation Fails**: Check test data format and agent compatibility
 2. **Low Scores**: Review agent prompts and instructions
-3. **Missing Logs**: Verify logging is enabled in main app
+3. **Missing Logs**: Verify logging is enabled in the main app
 4. **Import Errors**: Ensure all dependencies are installed
 
 ## Next Steps
